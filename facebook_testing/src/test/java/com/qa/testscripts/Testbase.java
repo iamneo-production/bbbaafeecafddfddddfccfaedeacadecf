@@ -19,7 +19,7 @@ public class Testbase
   @BeforeClass
   public void setup()throws IOException,InterruptedException
   {
-	  
+	  String Url="https://www.fb.com";
     WebDriverManager.chromedriver().setup();
 	  Driver=new ChromeDriver();
 	 

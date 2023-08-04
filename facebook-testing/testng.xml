@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-<parameter name="Url" value="https://www.fb.com/"></parameter>
- <test thread-count="5" name="fbscript" parallel="classes">
+  <parameter name="Url" value="https://www.fb.com/"></parameter>
+  <test thread-count="5" name="fbscript" parallel="classes">
+ <parameter name="Browser" value="chrome"></parameter> 
    <classes>
       <class name="com.qa.testscripts.fbscript"/>
      </classes>
- </test>
- 
+  </test> 
  </suite> 

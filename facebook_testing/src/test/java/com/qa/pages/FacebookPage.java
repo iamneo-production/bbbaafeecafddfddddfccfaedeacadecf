@@ -2,7 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Fb_Pages {
+public class FacebookPage {
     private final WebDriver driver;
 
     // Locators

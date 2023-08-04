@@ -1,37 +1,56 @@
-package com.qa.testscripts;
-
-import org.openqa.selenium.support.ui.Select;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.qa.pages.Fb_pages;
+public class Fb_001 {
 
-public class Fb_001 extends Testbase {
-	
-	@Test
-	public void testcase_001() throws InterruptedException {
-		String actual = Driver.getCurrentUrl();
-		String expected = "https://www.facebook.com/";
-		
-		Assert.assertEquals(actual,expected);
-		Fb_pages.createAccount.click();
-		Thread.sleep(4000);
-		Fb_pages.firstname.sendKeys("kiku");
-		Fb_pages.surname.sendKeys("koku");
-		Fb_pages.phonenumber.sendKeys("9087654578");
-		Fb_pages.newpassword.sendKeys("abcdef@12345");
-		Select selectday = new Select(Fb_pages.day);
-		selectday.selectByVisibleText("22");
-		Thread.sleep(3000);
-		Select selectmonth = new Select(Fb_pages.month);
-		selectmonth.selectByVisibleText("Nov");
-		Thread.sleep(3000);
-		Select selectyear = new Select(Fb_pages.year);
-		selectyear.selectByVisibleText("2001");
-		Thread.sleep(3000);
-		Fb_pages.gender.click();
-		Fb_pages.signup.click();
-		Thread.sleep(8000);
-		Assert.assertEquals(Driver.getTitle(), "Facebook");
-	}
+    private WebDriver driver;
+    private FacebookPage facebookPage;
+
+    @BeforeTest
+    public void setUp() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        facebookPage = new FacebookPage(driver);
+    }
+
+    @Test
+    public void testFacebookRegistration() {
+        // Open Chrome browser and navigate to Facebook
+        driver.get("http://www.fb.com");
+
+        // Verify that the page is redirected to "http://www.facebook.com"
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertEquals(currentUrl, "http://www.facebook.com", "Page redirection failed.");
+
+        // Verify that the "Create an account" section is displayed
+        Assert.assertTrue(facebookPage.isCreateAccountSectionDisplayed(),
+                "Create an account section is not displayed.");
+
+        // Fill in the registration form
+        facebookPage.fillRegistrationForm("John", "Doe", "johndoe@example.com",
+                "johndoe@example.com", "password123");
+
+        // Update the date of birth
+        facebookPage.updateBirthDate("10", "August", "1990");
+
+        // Select gender
+        facebookPage.selectGender();
+
+        // Click on "Create an account"
+        facebookPage.clickCreateAccountButton();
+
+        // Verify that the account is created successfully (Add relevant verification steps here)
+
+    }
+
+    @AfterTest
+    public void tearDown() {
+        // Close the browser
+        driver.quit();
+    }
 }

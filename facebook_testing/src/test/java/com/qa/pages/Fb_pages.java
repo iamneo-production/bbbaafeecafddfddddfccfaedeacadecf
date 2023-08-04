@@ -1,48 +1,51 @@
-package com.qa.pages;
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class Fb_pages {
-	WebDriver Driver;
-	
-	@FindBy(xpath="//div[@class='_6ltg']//a[@role='button']")
-	public static WebElement createAccount; 
-	
-	@FindBy(xpath="//div[@class='_5dbb']//input[@name='firstname']")
-	public static WebElement firstname;
-	
-	@FindBy(xpath="//div[@class='_5dbb']//input[@name='lastname']")
-	public static WebElement surname;
-	
-	@FindBy(xpath="//div[@class='_5dbb']//input[@name='reg_email__']")
-	public static WebElement phonenumber;
-	
-	@FindBy(xpath="//*[@id=\"password_step_input\"]")
-	public static WebElement newpassword;
-	
-	@FindBy(id="day")
-	public static WebElement day;	
-	
-	@FindBy(id="month")
-	public static WebElement month;
-	
-	@FindBy(id="year")
-	public static WebElement year;
-	
-	@FindBy(xpath="//input[@type='radio'][@value='2']")
-	public static WebElement gender;
-	
-	@FindBy(xpath="//div[@class='_1lch']//button[@type='submit']")
-	public static WebElement signup;
-	
-	public Fb_pages(WebDriver Driver) {
-		this.Driver = Driver;
-		PageFactory.initElements(Driver, this);
-		
-	}
+public class Fb_Pages {
+    private final WebDriver driver;
 
-	
+    // Locators
+    private final By createAccountSection = By.id("section_create_account");
+    private final By firstNameInput = By.name("firstname");
+    private final By lastNameInput = By.name("lastname");
+    private final By mobileOrEmailInput = By.name("reg_email__");
+    private final By reenterMobileInput = By.name("reg_email_confirmation__");
+    private final By newPasswordInput = By.name("reg_passwd__");
+    private final By birthDayDropdown = By.id("day");
+    private final By birthMonthDropdown = By.id("month");
+    private final By birthYearDropdown = By.id("year");
+    private final By genderRadioButton = By.xpath("//input[@name='sex' and @value='2']");
+    private final By createAccountButton = By.name("websubmit");
+
+    public FacebookPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public boolean isCreateAccountSectionDisplayed() {
+        return driver.findElement(createAccountSection).isDisplayed();
+    }
+
+    public void fillRegistrationForm(String firstName, String lastName, String mobileOrEmail,
+                                     String reenterMobile, String password) {
+        driver.findElement(firstNameInput).sendKeys(firstName);
+        driver.findElement(lastNameInput).sendKeys(lastName);
+        driver.findElement(mobileOrEmailInput).sendKeys(mobileOrEmail);
+        driver.findElement(reenterMobileInput).sendKeys(reenterMobile);
+        driver.findElement(newPasswordInput).sendKeys(password);
+    }
+
+    public void updateBirthDate(String day, String month, String year) {
+        driver.findElement(birthDayDropdown).sendKeys(day);
+        driver.findElement(birthMonthDropdown).sendKeys(month);
+        driver.findElement(birthYearDropdown).sendKeys(year);
+    }
+
+    public void selectGender() {
+        driver.findElement(genderRadioButton).click();
+    }
+
+    public void clickCreateAccountButton() {
+        driver.findElement(createAccountButton).click();
+    }
 }

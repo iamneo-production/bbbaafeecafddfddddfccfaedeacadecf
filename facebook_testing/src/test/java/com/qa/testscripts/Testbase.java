@@ -15,9 +15,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class Testbase 
 {
   WebDriver Driver;
-  @Parameters({"Url"})
+  //@Parameters({"Url"})
   @BeforeClass
-  public void setup(String Url)throws IOException,InterruptedException
+  public void setup()throws IOException,InterruptedException
   {
 	  
     WebDriverManager.chromedriver().setup();

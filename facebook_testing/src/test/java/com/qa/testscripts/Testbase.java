@@ -8,7 +8,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
-import com.qa.pages.fbpages;
+import com.qa.pages.Fb_pages;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -23,9 +23,9 @@ public class Testbase
     WebDriverManager.chromedriver().setup();
 	  Driver=new ChromeDriver();
 	 
-	  fbpages driver=new fbpages(Driver);
+	  Fb_pages driver=new Fb_pages(Driver);
 	  Driver.navigate().to(Url);
-	  Thread.sleep(3000);
+	  Thread.sleep(5000);
   }
 	
 //@AfterClass

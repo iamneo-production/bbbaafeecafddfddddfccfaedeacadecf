@@ -25,7 +25,7 @@ public class Testbase
 	 
 	  fbpages driver=new fbpages(Driver);
 	  Driver.navigate().to(Url);
-	  Thread.sleep(3000);
+	  Thread.sleep(5000);
   }
 	
 //@AfterClass

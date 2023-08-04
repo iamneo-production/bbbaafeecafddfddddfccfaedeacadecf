@@ -9,7 +9,7 @@ import com.qa.pages.fbpages;
 public class fbscript extends testbase {
 	
 	@Test
-	public void testcase_001() throws InterruptedException {
+	public void testCreateAcc() throws InterruptedException {
 		String actual = Driver.getCurrentUrl();
 		String expected = "https://www.facebook.com/";
 		

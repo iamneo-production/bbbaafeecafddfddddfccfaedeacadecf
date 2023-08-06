@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <parameter name="Url" value="https://www.fb.com/"/>
+  <test thread-count="5" parallel="classes" name="Fb_001(failed)">
+    <classes>
+      <class name="com.qa.testscripts.Fb_001">
+        <methods>
+          <include name="setup"/>
+          <include name="testcase_001"/>
+        </methods>
+      </class> <!-- com.qa.testscripts.Fb_001 -->
+    </classes>
+  </test> <!-- Fb_001(failed) -->
+</suite> <!-- Failed suite [Suite] -->

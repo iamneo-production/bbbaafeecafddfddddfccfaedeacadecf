@@ -2,7 +2,7 @@
 <suite name="Suite">
     <test thread-count="1" name="Fb_001">
         <classes>
-            <class name="com.qa.testscripts.Fb_001"/>
+            <class name="com.qa.testscripts.Fbtest"/>
         </classes>
     </test>
 </suite>

@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Fb_001 {
+public class Fbtest {
     WebDriver driver;
 
     @BeforeClass
@@ -70,23 +70,23 @@ public class Fb_001 {
         Assert.assertEquals(actual, expected);
         Fb_pages fbPages = new Fb_pages(driver);
         fbPages.createAccount.click();
-        Thread.sleep(4000);
-        fbPages.firstname.sendKeys("kiku");
-        fbPages.surname.sendKeys("koku");
-        fbPages.phonenumber.sendKeys("9087654578");
-        fbPages.newpassword.sendKeys("abcdef@12345");
+        Thread.sleep(2000);
+        fbPages.firstname.sendKeys("Mr");
+        fbPages.surname.sendKeys("Zoro");
+        fbPages.phonenumber.sendKeys("987654321");
+        fbPages.newpassword.sendKeys("abcde@4321");
         Select selectday = new Select(fbPages.day);
-        selectday.selectByVisibleText("22");
-        Thread.sleep(3000);
+        selectday.selectByVisibleText("02");
+        Thread.sleep(2000);
         Select selectmonth = new Select(fbPages.month);
-        selectmonth.selectByVisibleText("Nov");
-        Thread.sleep(3000);
+        selectmonth.selectByVisibleText("Dec");
+        Thread.sleep(2000);
         Select selectyear = new Select(fbPages.year);
         selectyear.selectByVisibleText("2001");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         fbPages.gender.click();
         fbPages.signup.click();
-        Thread.sleep(8000);
+        Thread.sleep(2000);
         Assert.assertEquals(driver.getTitle(), "Facebook");
     }
 
